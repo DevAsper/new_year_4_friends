@@ -1,4 +1,4 @@
-/* Общий стиль */
+/* Глобальные стили */
 body {
   margin: 0;
   padding: 0;
@@ -18,7 +18,7 @@ body {
   z-index: 1;
 }
 
-/* Праздничный стиль для заголовка */
+/* Стили заголовка */
 h1 {
   font-size: 4rem;
   margin-bottom: 20px;
@@ -27,7 +27,7 @@ h1 {
   animation: sparkle 2s infinite;
 }
 
-/* Праздничный стиль для текста */
+/* Стили текста */
 p {
   font-size: 1.8rem;
   margin-bottom: 20px;
@@ -78,17 +78,14 @@ button:hover {
   background: white;
   border-radius: 50%;
   animation: fall 10s linear infinite;
-  opacity: 0.8;
 }
 
-/* Анимация снежинок */
 @keyframes fall {
   0% {
     transform: translateY(0) translateX(0);
-    opacity: 0.8;
   }
   100% {
     transform: translateY(110vh) translateX(calc(-20vw + 40vw * random));
-    opacity: 0.2;
   }
 }
+
