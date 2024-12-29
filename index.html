@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Новогоднее поздравление</title>
+  <title>С Новым Годом!</title>
   <link rel="stylesheet" href="newyear.css">
 </head>
 <body>
-  <div class="snow"></div>
-  <div class="content">
-    <h1>С Новым Годом!</h1>
-    <p>Пусть этот год принесёт счастье, здоровье и успех!</p>
-    <button id="play-music">Включить мелодию</button>
+  <div class="container">
+    <h1 class="greeting">С Новым Годом!</h1>
+    <p class="message">Пусть этот год принесет удачу, счастье, спокойствие и возможности!</p>
+    <audio id="background-music" src="melody.mp3" loop></audio>
+    <button class="play-button" id="toggle-music">🎵 Включить мелодию</button>
   </div>
+  <div class="snow"></div>
   <script src="newyear.js"></script>
 </body>
 </html>

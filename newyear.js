@@ -1,42 +1,40 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const snowContainer = document.querySelector(".snow");
-  const playButton = document.getElementById("play-music");
+  const playButton = document.getElementById("toggle-music");
   const audio = new Audio("melody.mp3");
+  const snowContainer = document.querySelector(".snow");
+  let isPlaying = false;
 
-  // Проверяем, есть ли контейнер для снега
-  if (!snowContainer) {
-    console.error("Контейнер для снега (.snow) не найден!");
-    return;
-  }
+  // Управление музыкой
+  playButton.addEventListener("click", () => {
+    if (isPlaying) {
+      audio.pause();
+      playButton.textContent = "🎵 Включить мелодию";
+    } else {
+      audio.play();
+      playButton.textContent = "🎵 Остановить мелодию";
+    }
+    isPlaying = !isPlaying;
+  });
 
-  // Функция для генерации снежинок
+  // Генерация снежинок
   const createSnowflakes = () => {
     for (let i = 0; i < 100; i++) {
-      const snowflake = document.createElement("span");
+      const snowflake = document.createElement("div");
+      snowflake.className = "snowflake";
 
-      // Генерация случайных стилей для снежинок
-      snowflake.style.left = `${Math.random() * 100}%`;
+      // Параметры снежинки
+      snowflake.style.left = `${Math.random() * 100}vw`;
       snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`; // Скорость падения
       snowflake.style.animationDelay = `${Math.random() * 5}s`; // Задержка перед началом
-      snowflake.style.opacity = `${Math.random() * 0.8 + 0.2}`; // Прозрачность
-      snowflake.style.width = `${Math.random() * 8 + 2}px`; // Размер снежинки
-      snowflake.style.height = snowflake.style.width;
 
       snowContainer.appendChild(snowflake);
     }
   };
 
-  // Воспроизведение музыки
-  playButton.addEventListener("click", () => {
-    if (audio.paused) {
-      audio.play();
-      playButton.textContent = "Выключить мелодию";
-    } else {
-      audio.pause();
-      playButton.textContent = "Включить мелодию";
-    }
-  });
-
-  // Генерация снежинок
-  createSnowflakes();
+  // Проверка наличия контейнера и создание снежинок
+  if (snowContainer) {
+    createSnowflakes();
+  } else {
+    console.error("Контейнер для снега (.snow) не найден!");
+  }
 });
